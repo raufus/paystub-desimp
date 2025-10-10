@@ -28,17 +28,41 @@ export function FaqSection() {
   ]
 
   return (
-    <section id="faq" className="py-16 bg-background">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-8">FAQ</h2>
-        <Accordion type="multiple" className="rounded-xl border bg-white p-2">
-          {faqs.map((f, idx) => (
-            <AccordionItem key={idx} value={`item-${idx}`}>
-              <AccordionTrigger className="text-base">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+    <section id="faq" className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/20 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            Frequently Asked 
+            <span className="text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+              Questions
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Find answers to common questions about our document services
+          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-6 rounded-full"></div>
+        </div>
+        
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+          <Accordion type="multiple" className="divide-y divide-gray-100">
+            {faqs.map((f, idx) => (
+              <AccordionItem key={idx} value={`item-${idx}`} className="border-0">
+                <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-primary transition-colors duration-300 px-8 py-6 text-lg hover:no-underline">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 px-8 pb-6 text-base leading-relaxed">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   )

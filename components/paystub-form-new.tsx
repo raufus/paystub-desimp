@@ -467,18 +467,15 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
 
   return (
     <div className="space-y-0">
-      {/* Custom Teal Header */}
-      <div className="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg">
-        <div className="flex items-center gap-3">
-          <span className="text-lg font-bold">STEP 2</span>
-          <span className="text-lg">Paystub Details</span>
+      <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-lg">
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
+            2
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">Paystub Details</h2>
         </div>
-      </div>
-      
-      {/* Form Content */}
-      <div className="bg-white p-6 rounded-b-lg border border-gray-200 border-t-0">
-        <div className="mb-4 text-sm text-gray-600">
-          * Indicates required field.
+        <div className="mb-6 text-sm text-gray-500">
+          * Required fields
         </div>
         
         {/* Basic Settings */}
@@ -665,19 +662,16 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
       </div>
 
       {/* Company Information Section */}
-      <div className="space-y-0 mt-8">
-        {/* Custom Teal Header */}
-        <div className="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg">
-          <div className="flex items-center gap-3">
-            <span className="text-lg font-bold">STEP 3</span>
-            <span className="text-lg">Company Information</span>
+      <div className="mt-8">
+        <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-lg">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
+              3
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">Company Information</h2>
           </div>
-        </div>
-        
-        {/* Form Content */}
-        <div className="bg-white p-6 rounded-b-lg border border-gray-200 border-t-0">
-          <div className="mb-4 text-sm text-gray-600">
-            * Indicates required field.
+          <div className="mb-6 text-sm text-gray-500">
+            * Required fields
           </div>
           
           {/* Company Information Form */}
@@ -811,19 +805,16 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
       </div>
 
       {/* Employee Information Section */}
-      <div className="space-y-0 mt-8">
-        {/* Custom Teal Header */}
-        <div className="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg">
-          <div className="flex items-center gap-3">
-            <span className="text-lg font-bold">STEP 4</span>
-            <span className="text-lg">Employee Information</span>
+      <div className="mt-8">
+        <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-lg">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
+              4
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">Employee Information</h2>
           </div>
-        </div>
-        
-        {/* Form Content */}
-        <div className="bg-white p-6 rounded-b-lg border border-gray-200 border-t-0">
-          <div className="mb-4 text-sm text-gray-600">
-            * Indicates required field.
+          <div className="mb-6 text-sm text-gray-500">
+            * Required fields
           </div>
           
           {/* Employee Information Form */}
@@ -1048,36 +1039,16 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
       </div>
 
       {/* STEP 5 - Earnings Statement Section */}
-      <div className="space-y-0 mt-8">
-        {/* Custom Teal Header */}
-        <div className="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg">
-          <div className="flex items-center gap-3">
-            <span className="text-lg font-bold">STEP 5</span>
-            <span className="text-lg">Earnings Statement</span>
+      <div className="mt-8">
+        <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-lg">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
+              5
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">Earnings Statement</h2>
           </div>
-        </div>
-        
-        {/* Paystub Selector */}
-        <div className="bg-primary text-primary-foreground px-6 py-3">
-          <Select
-            value={`PAYSTUB #${data.payPeriodNumber} - Pay period: ${data.payPeriodStart} to ${data.payPeriodEnd}`}
-            onValueChange={(value) => {
-              // Handle paystub selection if needed
-            }}
-          >
-            <SelectTrigger className="bg-primary border-none text-primary-foreground hover:bg-primary/90 focus:ring-0 focus:ring-offset-0">
-              <SelectValue placeholder="" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="paystub1">PAYSTUB #1 - Pay period: 08/17/2025 to 08/30/2025</SelectItem>
-              <SelectItem value="paystub2">PAYSTUB #2 - Pay period: 08/31/2025 to 09/13/2025</SelectItem>
-              <SelectItem value="paystub3">PAYSTUB #3 - Pay period: 09/14/2025 to 09/27/2025</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        
-        {/* Form Content */}
-        <div className="bg-white p-6 rounded-b-lg border border-gray-200 border-t-0">
+          
+
         
           {/* Pay Period Section */}
           <div className="space-y-6 mb-8">
@@ -1099,14 +1070,11 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                   ))}
                 </SelectContent>
               </Select>
-              <div className="text-xs text-gray-500 mt-1">
-                💡 <strong>Note:</strong> Pay Period #1 shows $0.00 Prior YTD (no previous periods). 
-                Select higher periods (e.g., #5, #10) to see Prior YTD calculations.
-              </div>
+
             </div>
 
             {/* Pay period and Pay date */}
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-gray-700 flex items-center gap-1">
                   Pay period 
@@ -1149,8 +1117,8 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
 
           {/* Earnings Table */}
           <div className="space-y-8">
-            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-              <table className="w-full">
+            <div className="bg-white border border-gray-200 rounded-lg overflow-x-auto">
+              <table className="w-full min-w-[800px]">
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="text-left p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">EARNINGS</th>
@@ -1173,26 +1141,38 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                       {data.payType === "salary" ? (
                         <Input
                           type="text"
+                          pattern="[0-9.]*"
                           value={getDisplay('salary', String(data.salary || ''))}
                           onChange={(e) => {
                             const v = e.target.value
                             setDisplay('salary', v)
                             handleInputChange("salary", toNumber(v))
                           }}
+                          onKeyDown={(e) => {
+                            if (!/[0-9.]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                              e.preventDefault()
+                            }
+                          }}
                           className="text-center border-b-2 border-teal-500 rounded-none border-t-0 border-l-0 border-r-0 bg-transparent text-sm"
-                          placeholder="Salary Amount"
+                          placeholder="50000"
                         />
                       ) : (
                         <Input
                           type="text"
+                          pattern="[0-9.]*"
                           value={getDisplay('hourlyRate', String(data.hourlyRate || ''))}
                           onChange={(e) => {
                             const v = e.target.value
                             setDisplay('hourlyRate', v)
                             handleInputChange("hourlyRate", toNumber(v))
                           }}
+                          onKeyDown={(e) => {
+                            if (!/[0-9.]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                              e.preventDefault()
+                            }
+                          }}
                           className="text-center border-b-2 border-teal-500 rounded-none border-t-0 border-l-0 border-r-0 bg-transparent text-sm"
-                          placeholder="Hourly Rate"
+                          placeholder="25.00"
                         />
                       )}
                     </td>
@@ -1214,14 +1194,14 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                         placeholder=""
                       />
                     </td>
-                    <td className="p-4 text-center text-sm font-medium border-r border-gray-200">
+                    <td className="p-4 text-center text-sm font-bold border-r border-gray-200">
                       {(() => {
                         if (data.payType === "salary") {
                           const perPeriod = calculateGrossPay();
-                          return perPeriod ? formatAmount(perPeriod) : '';
+                          return perPeriod ? formatAmount(perPeriod) : '0.00';
                         } else {
                           const result = (data.hourlyRate || 0) * (data.hoursWorked || 0);
-                          return result ? formatAmount(result) : '';
+                          return result ? formatAmount(result) : '0.00';
                         }
                       })()}
                     </td>
@@ -1269,10 +1249,10 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                         placeholder=""
                       />
                     </td>
-                    <td className="p-4 text-center text-sm font-medium border-r border-gray-200">
+                    <td className="p-4 text-center text-sm font-bold border-r border-gray-200">
                       {(() => {
                         const result = (data.overtimeRate || 0) * (data.overtimeHours || 0);
-                        return result ? formatAmount(result) : '';
+                        return result ? formatAmount(result) : '0.00';
                       })()}
                     </td>
                     <td className="p-4 border-r border-gray-200">
@@ -1296,7 +1276,7 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                     <td className="p-4 text-sm font-semibold text-gray-700 border-r border-gray-200"></td>
                     <td className="p-4 border-r border-gray-200"></td>
                     <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">GROSS PAY</td>
-                    <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">{calculateGrossPay() ? formatAmount(calculateGrossPay()) : ''}</td>
+                    <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">{calculateGrossPay() ? formatAmount(calculateGrossPay()) : '0.00'}</td>
                     <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">
                       {(() => {
                         const currentGross = calculateGrossPay()
@@ -1316,8 +1296,8 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
             </div>
 
             {/* Deductions Table */}
-            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-              <table className="w-full">
+            <div className="bg-white border border-gray-200 rounded-lg overflow-x-auto">
+              <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="text-left p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">DEDUCTIONS</th>
@@ -1326,204 +1306,206 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                     <th className="text-center p-4 text-sm font-semibold text-gray-700">YTD TOTAL</th>
                   </tr>
                 </thead>
-                {data.employmentType === 'contractor' ? (
-                  <tbody>
-                    <tr className="bg-gray-50">
-                      <td className="p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">Deduction Total</td>
-                      <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200"></td>
-                      <td className="p-4 text-center text-sm font-medium text-gray-500 italic">No deductions are calculated for contractors.</td>
-                      <td className="p-4 text-center text-sm font-semibold text-gray-700"></td>
-                    </tr>
-                    <tr className="bg-gray-100">
-                      <td className="p-4 text-sm font-bold text-gray-700 border-r border-gray-200">Net Pay</td>
-                      <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">{calculateNetPay() ? formatAmount(calculateNetPay()) : ''}</td>
-                      <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">
-                        {(() => {
-                          const currentNetPay = calculateNetPay()
-                          const priorYTD = calculatePriorYTD(currentNetPay, data.payPeriodNumber || 1)
-                          return formatAmount(priorYTD)
-                        })()}
-                      </td>
-                      <td className="p-4 text-center text-sm font-bold text-gray-700">
-                        {(() => {
-                          const currentNetPay = calculateNetPay()
-                          return formatAmount(calculateYTDTotal(currentNetPay, data.payPeriodNumber || 1))
-                        })()}
-                      </td>
-                    </tr>
-                  </tbody>
-                ) : (
-                  <tbody>
-                    <tr className="border-b border-gray-200">
-                      <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
-                        FICA - Medicare
-                      </td>
-                      <td className="p-4 border-r border-gray-200">
-                        <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
-                          {data.medicare ? formatAmount(data.medicare) : ''}
-                        </div>
-                      </td>
-                      <td className="p-4 border-r border-gray-200">
-                        <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                <tbody>
+                  {data.employmentType === 'contractor' ? (
+                    <>
+                      <tr className="bg-gray-50">
+                        <td className="p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">Deduction Total</td>
+                        <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">0.00</td>
+                        <td className="p-4 text-center text-sm font-medium text-gray-500 italic">No deductions are calculated for contractors.</td>
+                        <td className="p-4 text-center text-sm font-semibold text-gray-700">0.00</td>
+                      </tr>
+                      <tr className="bg-gray-100">
+                        <td className="p-4 text-sm font-bold text-gray-700 border-r border-gray-200">Net Pay</td>
+                        <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">{calculateNetPay() ? formatAmount(calculateNetPay()) : '0.00'}</td>
+                        <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">
+                          {(() => {
+                            const currentNetPay = calculateNetPay()
+                            const priorYTD = calculatePriorYTD(currentNetPay, data.payPeriodNumber || 1)
+                            return formatAmount(priorYTD)
+                          })()}
+                        </td>
+                        <td className="p-4 text-center text-sm font-bold text-gray-700">
+                          {(() => {
+                            const currentNetPay = calculateNetPay()
+                            return formatAmount(calculateYTDTotal(currentNetPay, data.payPeriodNumber || 1))
+                          })()}
+                        </td>
+                      </tr>
+                    </>
+                  ) : (
+                    <>
+                      <tr className="border-b border-gray-200">
+                        <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
+                          FICA - Medicare
+                        </td>
+                        <td className="p-4 border-r border-gray-200">
+                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                            {data.medicare ? formatAmount(data.medicare) : ''}
+                          </div>
+                        </td>
+                        <td className="p-4 border-r border-gray-200">
+                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                            {(() => {
+                              const currentMedicare = data.medicare || 0
+                              const priorYTD = calculatePriorYTD(currentMedicare, data.payPeriodNumber || 1)
+                              return priorYTD > 0 ? formatAmount(priorYTD) : '0.00'
+                            })()}
+                          </div>
+                        </td>
+                        <td className="p-4 text-center text-sm font-medium">
                           {(() => {
                             const currentMedicare = data.medicare || 0
-                            const priorYTD = calculatePriorYTD(currentMedicare, data.payPeriodNumber || 1)
-                            return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                            const ytd = calculateYTDTotal(currentMedicare, data.payPeriodNumber || 1)
+                            return ytd > 0 ? formatAmount(ytd) : '0.00'
                           })()}
-                        </div>
-                      </td>
-                      <td className="p-4 text-center text-sm font-medium">
-                        {(() => {
-                          const currentMedicare = data.medicare || 0
-                          const ytd = calculateYTDTotal(currentMedicare, data.payPeriodNumber || 1)
-                          return ytd > 0 ? formatAmount(ytd) : ''
-                        })()}
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-200">
-                      <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
-                        FICA - Social Security
-                      </td>
-                      <td className="p-4 border-r border-gray-200">
-                        <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
-                          {data.socialSecurity ? formatAmount(data.socialSecurity) : ''}
-                        </div>
-                      </td>
-                      <td className="p-4 border-r border-gray-200">
-                        <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                        </td>
+                      </tr>
+                      <tr className="border-b border-gray-200">
+                        <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
+                          FICA - Social Security
+                        </td>
+                        <td className="p-4 border-r border-gray-200">
+                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                            {data.socialSecurity ? formatAmount(data.socialSecurity) : ''}
+                          </div>
+                        </td>
+                        <td className="p-4 border-r border-gray-200">
+                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                            {(() => {
+                              const currentSS = data.socialSecurity || 0
+                              const priorYTD = calculatePriorYTD(currentSS, data.payPeriodNumber || 1)
+                              return priorYTD > 0 ? formatAmount(priorYTD) : '0.00'
+                            })()}
+                          </div>
+                        </td>
+                        <td className="p-4 text-center text-sm font-medium">
                           {(() => {
                             const currentSS = data.socialSecurity || 0
-                            const priorYTD = calculatePriorYTD(currentSS, data.payPeriodNumber || 1)
-                            return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                            const ytd = calculateYTDTotal(currentSS, data.payPeriodNumber || 1)
+                            return ytd > 0 ? formatAmount(ytd) : '0.00'
                           })()}
-                        </div>
-                      </td>
-                      <td className="p-4 text-center text-sm font-medium">
-                        {(() => {
-                          const currentSS = data.socialSecurity || 0
-                          const ytd = calculateYTDTotal(currentSS, data.payPeriodNumber || 1)
-                          return ytd > 0 ? formatAmount(ytd) : ''
-                        })()}
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-200">
-                      <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
-                        Federal Tax
-                      </td>
-                      <td className="p-4 border-r border-gray-200">
-                        <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
-                          {data.federalTax ? formatAmount(data.federalTax) : ''}
-                        </div>
-                      </td>
-                      <td className="p-4 border-r border-gray-200">
-                        <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                        </td>
+                      </tr>
+                      <tr className="border-b border-gray-200">
+                        <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
+                          Federal Tax
+                        </td>
+                        <td className="p-4 border-r border-gray-200">
+                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                            {data.federalTax ? formatAmount(data.federalTax) : ''}
+                          </div>
+                        </td>
+                        <td className="p-4 border-r border-gray-200">
+                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                            {(() => {
+                              const currentFed = data.federalTax || 0
+                              const priorYTD = calculatePriorYTD(currentFed, data.payPeriodNumber || 1)
+                              return priorYTD > 0 ? formatAmount(priorYTD) : '0.00'
+                            })()}
+                          </div>
+                        </td>
+                        <td className="p-4 text-center text-sm font-medium">
                           {(() => {
                             const currentFed = data.federalTax || 0
-                            const priorYTD = calculatePriorYTD(currentFed, data.payPeriodNumber || 1)
-                            return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                            const ytd = calculateYTDTotal(currentFed, data.payPeriodNumber || 1)
+                            return ytd > 0 ? formatAmount(ytd) : '0.00'
                           })()}
-                        </div>
-                      </td>
-                      <td className="p-4 text-center text-sm font-medium">
-                        {(() => {
-                          const currentFed = data.federalTax || 0
-                          const ytd = calculateYTDTotal(currentFed, data.payPeriodNumber || 1)
-                          return ytd > 0 ? formatAmount(ytd) : ''
-                        })()}
-                      </td>
-                    </tr>
-                    {(data.stateTax && data.stateTax > 0) && (
-                      <tr className="border-b border-gray-200">
-                        <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
-                          State Tax
                         </td>
-                        <td className="p-4 border-r border-gray-200">
-                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
-                            {formatAmount(data.stateTax)}
-                          </div>
-                        </td>
-                        <td className="p-4 border-r border-gray-200">
-                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                      </tr>
+                      {(data.stateTax && data.stateTax > 0) && (
+                        <tr className="border-b border-gray-200">
+                          <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
+                            State Tax
+                          </td>
+                          <td className="p-4 border-r border-gray-200">
+                            <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                              {formatAmount(data.stateTax)}
+                            </div>
+                          </td>
+                          <td className="p-4 border-r border-gray-200">
+                            <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                              {(() => {
+                                const currentState = data.stateTax || 0
+                                const priorYTD = calculatePriorYTD(currentState, data.payPeriodNumber || 1)
+                                return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                              })()}
+                            </div>
+                          </td>
+                          <td className="p-4 text-center text-sm font-medium">
                             {(() => {
                               const currentState = data.stateTax || 0
-                              const priorYTD = calculatePriorYTD(currentState, data.payPeriodNumber || 1)
-                              return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                              const ytd = calculateYTDTotal(currentState, data.payPeriodNumber || 1)
+                              return ytd > 0 ? formatAmount(ytd) : ''
                             })()}
-                          </div>
-                        </td>
-                        <td className="p-4 text-center text-sm font-medium">
-                          {(() => {
-                            const currentState = data.stateTax || 0
-                            const ytd = calculateYTDTotal(currentState, data.payPeriodNumber || 1)
-                            return ytd > 0 ? formatAmount(ytd) : ''
-                          })()}
-                        </td>
-                      </tr>
-                    )}
-                    {(data.stateDisability && data.stateDisability > 0) && (
-                      <tr className="border-b border-gray-200">
-                        <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
-                          {((data.taxState || '').toUpperCase() === 'HI') ? 'TDI' : 'SDI'}
-                        </td>
-                        <td className="p-4 border-r border-gray-200">
-                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
-                            {formatAmount(data.stateDisability)}
-                          </div>
-                        </td>
-                        <td className="p-4 border-r border-gray-200">
-                          <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                          </td>
+                        </tr>
+                      )}
+                      {(data.stateDisability && data.stateDisability > 0) && (
+                        <tr className="border-b border-gray-200">
+                          <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
+                            {((data.taxState || '').toUpperCase() === 'HI') ? 'TDI' : 'SDI'}
+                          </td>
+                          <td className="p-4 border-r border-gray-200">
+                            <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                              {formatAmount(data.stateDisability)}
+                            </div>
+                          </td>
+                          <td className="p-4 border-r border-gray-200">
+                            <div className="text-center text-sm font-medium text-gray-700 bg-gray-50 py-2 px-3 rounded">
+                              {(() => {
+                                const currentSDI = data.stateDisability || 0
+                                const priorYTD = calculatePriorYTD(currentSDI, data.payPeriodNumber || 1)
+                                return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                              })()}
+                            </div>
+                          </td>
+                          <td className="p-4 text-center text-sm font-medium">
                             {(() => {
                               const currentSDI = data.stateDisability || 0
-                              const priorYTD = calculatePriorYTD(currentSDI, data.payPeriodNumber || 1)
-                              return priorYTD > 0 ? formatAmount(priorYTD) : ''
+                              const ytd = calculateYTDTotal(currentSDI, data.payPeriodNumber || 1)
+                              return ytd > 0 ? formatAmount(ytd) : ''
                             })()}
-                          </div>
-                        </td>
-                        <td className="p-4 text-center text-sm font-medium">
+                          </td>
+                        </tr>
+                      )}
+                      <tr className="bg-gray-50">
+                        <td className="p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">Deduction Total</td>
+                        <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">{calculateTotalDeductions() ? formatAmount(calculateTotalDeductions()) : ''}</td>
+                        <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">
                           {(() => {
-                            const currentSDI = data.stateDisability || 0
-                            const ytd = calculateYTDTotal(currentSDI, data.payPeriodNumber || 1)
-                            return ytd > 0 ? formatAmount(ytd) : ''
+                            const currentDeductions = calculateTotalDeductions()
+                            const priorYTD = calculatePriorYTD(currentDeductions, data.payPeriodNumber || 1)
+                            return formatAmount(priorYTD)
+                          })()}
+                        </td>
+                        <td className="p-4 text-center text-sm font-semibold text-gray-700">
+                          {(() => {
+                            const currentDeductions = calculateTotalDeductions()
+                            return formatAmount(calculateYTDTotal(currentDeductions, data.payPeriodNumber || 1))
                           })()}
                         </td>
                       </tr>
-                    )}
-                    <tr className="bg-gray-50">
-                      <td className="p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">Deduction Total</td>
-                      <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">{calculateTotalDeductions() ? formatAmount(calculateTotalDeductions()) : ''}</td>
-                      <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">
-                        {(() => {
-                          const currentDeductions = calculateTotalDeductions()
-                          const priorYTD = calculatePriorYTD(currentDeductions, data.payPeriodNumber || 1)
-                          return formatAmount(priorYTD)
-                        })()}
-                      </td>
-                      <td className="p-4 text-center text-sm font-semibold text-gray-700">
-                        {(() => {
-                          const currentDeductions = calculateTotalDeductions()
-                          return formatAmount(calculateYTDTotal(currentDeductions, data.payPeriodNumber || 1))
-                        })()}
-                      </td>
-                    </tr>
-                    <tr className="bg-gray-100">
-                      <td className="p-4 text-sm font-bold text-gray-700 border-r border-gray-200">Net Pay</td>
-                      <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">{calculateNetPay() ? formatAmount(calculateNetPay()) : ''}</td>
-                      <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">
-                        {(() => {
-                          const currentNetPay = calculateNetPay()
-                          const priorYTD = calculatePriorYTD(currentNetPay, data.payPeriodNumber || 1)
-                          return formatAmount(priorYTD)
-                        })()}
-                      </td>
-                      <td className="p-4 text-center text-sm font-bold text-gray-700">
-                        {(() => {
-                          const currentNetPay = calculateNetPay()
-                          return formatAmount(calculateYTDTotal(currentNetPay, data.payPeriodNumber || 1))
-                        })()}
-                      </td>
-                    </tr>
-                  </tbody>
-                )}
+                      <tr className="bg-gray-100">
+                        <td className="p-4 text-sm font-bold text-gray-700 border-r border-gray-200">Net Pay</td>
+                        <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">{calculateNetPay() ? formatAmount(calculateNetPay()) : '0.00'}</td>
+                        <td className="p-4 text-center text-sm font-bold text-gray-700 border-r border-gray-200">
+                          {(() => {
+                            const currentNetPay = calculateNetPay()
+                            const priorYTD = calculatePriorYTD(currentNetPay, data.payPeriodNumber || 1)
+                            return formatAmount(priorYTD)
+                          })()}
+                        </td>
+                        <td className="p-4 text-center text-sm font-bold text-gray-700">
+                          {(() => {
+                            const currentNetPay = calculateNetPay()
+                            return formatAmount(calculateYTDTotal(currentNetPay, data.payPeriodNumber || 1))
+                          })()}
+                        </td>
+                      </tr>
+                    </>
+                  )}
+                </tbody>
               </table>
             </div>
           </div>

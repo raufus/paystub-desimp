@@ -149,18 +149,18 @@ export function ModernPreview({ data }: TemplateProps) {
                         <>
                           <tr>
                             <td className="border border-gray-400 p-1 bg-white">Regular</td>
-                            <td className="border border-gray-400 p-1 bg-white text-right">{data.hoursWorked||0}</td>
+                            <td className="border border-gray-400 p-1 bg-white text-right">{data.hoursWorked || '0'}</td>
                             <td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency((data.hourlyRate||0)*(data.hoursWorked||0))}</span></td>
                             <td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(((data.hourlyRate||0)*(data.hoursWorked||0))*(periods))}</span></td>
                           </tr>
-                          {data.overtimeHours>0 && (
+                          {(data.overtimeHours && data.overtimeHours > 0) ? (
                             <tr>
                               <td className="border border-gray-400 p-1 bg-white">Overtime</td>
-                              <td className="border border-gray-400 p-1 bg-white text-right">{data.overtimeHours||0}</td>
+                              <td className="border border-gray-400 p-1 bg-white text-right">{data.overtimeHours}</td>
                               <td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency((data.overtimeHours||0)*(data.overtimeRate||data.hourlyRate*1.5||0))}</span></td>
                               <td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(((data.overtimeHours||0)*(data.overtimeRate||data.hourlyRate*1.5||0))*(periods))}</span></td>
                             </tr>
-                          )}
+                          ) : null}
                         </>
                       ) : (
                         <tr>
@@ -193,12 +193,12 @@ export function ModernPreview({ data }: TemplateProps) {
                       <tr><td className="border border-gray-400 p-1 bg-white">FICA - Medicare</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.medicare||0)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(ytdMedicare||0)}</span></td></tr>
                       <tr><td className="border border-gray-400 p-1 bg-white">FICA - Social Security</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.socialSecurity||0)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(ytdSS||0)}</span></td></tr>
                       <tr><td className="border border-gray-400 p-1 bg-white">Federal Tax</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.federalTax||0)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(ytdFederal||0)}</span></td></tr>
-                      {(data.stateTax && data.stateTax > 0) && (
-                        <tr><td className="border border-gray-400 p-1 bg-white">State Tax</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.stateTax||0)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(ytdState||0)}</span></td></tr>
-                      )}
-                      {(data.stateDisability && data.stateDisability > 0) && (
-                        <tr><td className="border border-gray-400 p-1 bg-white">{((data.taxState||'').toUpperCase()==='HI')?'TDI':'SDI'}</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.stateDisability||0)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(sdiYtd||0)}</span></td></tr>
-                      )}
+                      {(data.stateTax && data.stateTax > 0) ? (
+                        <tr><td className="border border-gray-400 p-1 bg-white">State Tax</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.stateTax)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(ytdState)}</span></td></tr>
+                      ) : null}
+                      {(data.stateDisability && data.stateDisability > 0) ? (
+                        <tr><td className="border border-gray-400 p-1 bg-white">{((data.taxState||'').toUpperCase()==='HI')?'TDI':'SDI'}</td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(data.stateDisability)}</span></td><td className="border border-gray-400 p-1 bg-white text-right"><span className="calc-val">{formatCurrency(sdiYtd)}</span></td></tr>
+                      ) : null}
                       <tr className="font-bold bg-gray-50"><td className="border border-gray-400 p-1">Associated Taxes</td><td className="border border-gray-400 p-1 text-right"><span className="calc-val">{formatCurrency(taxesCurrent)}</span></td><td className="border border-gray-400 p-1 text-right"><span className="calc-val">{formatCurrency(taxesYtd)}</span></td></tr>
                     </tbody>
                   </table>

@@ -30,7 +30,7 @@ html {
 }
         `}</style>
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

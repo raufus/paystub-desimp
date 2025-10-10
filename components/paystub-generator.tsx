@@ -166,13 +166,13 @@ const initialData: PaystubData = {
   payFrequency: "bi-weekly",
   adviceNumber: "",
   payType: "hourly",
-  hourlyRate: 0,
-  hoursWorked: 0,
+  hourlyRate: 25,
+  hoursWorked: 40,
   regularRate: 0,
   regularHours: 0,
-  overtimeRate: 0,
+  overtimeRate: 37.5,
   overtimeHours: 0,
-  salary: 0,
+  salary: 50000,
   bonusAmount: 0,
   commissionAmount: 0,
   holidayHours: 0,
@@ -336,93 +336,102 @@ export function PaystubGenerator({ user: _user, initialTemplateId }: PaystubGene
   return (
     <div className="space-y-6">
       <div className="space-y-8">
-        {/* Template selection dropdown - moved to top */}
-        <div className="bg-white p-6 rounded-lg border">
-          <div className="text-center sm:text-left mb-3 font-medium">Select template</div>
-          <div className="flex justify-center sm:justify-start">
-            <div className="w-56">
-              <Select
-                value={paystubData.templateId}
-                onValueChange={(v) => updatePaystubData({ templateId: v })}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Template #1" />
+        {/* Template & Color Selection */}
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-6 border">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <span className="text-lg font-semibold text-gray-700">Template:</span>
+              <Select value={paystubData.templateId} onValueChange={(v) => updatePaystubData({ templateId: v })}>
+                <SelectTrigger className="w-48 h-11 bg-white border-2 rounded-xl">
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="template1">Template #1</SelectItem>
-                  <SelectItem value="template2">Template #2</SelectItem>
-                  <SelectItem value="template3">Template #3</SelectItem>
-                  <SelectItem value="template4">Template #4</SelectItem>
+                  <SelectItem value="template1">Classic</SelectItem>
+                  <SelectItem value="template2">Modern</SelectItem>
+                  <SelectItem value="template3">Detailed</SelectItem>
+                  <SelectItem value="template4">Compact</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-          </div>
-        </div>
-        
-        {/* Theme color options - moved near template selector */}
-        <div className="bg-white p-6 rounded-lg border">
-          <div className="text-center mb-3 font-medium">Color options</div>
-          <div className="flex items-center justify-center gap-3">
-            {([
-              { id: 'blue', color: '#60a5fa' },
-              { id: 'green', color: '#10b981' },
-              { id: 'gray', color: '#9ca3af' },
-              { id: 'purple', color: '#8b5cf6' },
-              { id: 'orange', color: '#f59e0b' },
-              { id: 'red', color: '#ef4444' },
-            ] as const).map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                aria-label={`Theme ${t.id}`}
-                onClick={() => updatePaystubData({ themeId: t.id, themeColor: t.color })}
-                className="w-8 h-8 rounded shadow border-2"
-                style={{ backgroundColor: t.color, borderColor: paystubData.themeId === t.id ? t.color : '#e5e7eb' }}
-                title={t.id}
-              />
-            ))}
+            
+            <div className="flex items-center gap-4">
+              <span className="text-lg font-semibold text-gray-700">Color:</span>
+              <div className="flex gap-2">
+                {[
+                  { id: 'blue', color: '#60a5fa' },
+                  { id: 'green', color: '#10b981' },
+                  { id: 'gray', color: '#9ca3af' },
+                  { id: 'purple', color: '#8b5cf6' },
+                  { id: 'orange', color: '#f59e0b' },
+                  { id: 'red', color: '#ef4444' },
+                ].map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => updatePaystubData({ themeId: t.id, themeColor: t.color })}
+                    className={`w-8 h-8 rounded-full border-2 ${paystubData.themeId === t.id ? 'border-gray-800 scale-110' : 'border-gray-300'}`}
+                    style={{ backgroundColor: t.color }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="bg-white">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
           <PaystubPreview data={paystubData} />
         </div>
-        {/* Simple, centered CTA below preview (moved from header) */}
-        <div className="flex justify-center mt-4">
+        {/* Custom Templates CTA */}
+        <div className="flex justify-center">
           <a
             href={`https://wa.me/12067045757?text=${encodeURIComponent("Hi! I'm interested in personalized and customized paystub templates. Can you help me?")}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="outline" className="bg-white text-black">
+            <Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all">
               <MessageCircle className="h-4 w-4 mr-2" />
-              Customized templates
+              Get Custom Templates
             </Button>
           </a>
         </div>
 
         <StepHeader step={1} title="Company Logo" />
         
-        <div className="bg-white p-6 rounded-lg border">
+        <div className="bg-white rounded-3xl border border-gray-200 shadow-lg p-8">
           <LogoUpload 
             logo={paystubData.companyLogo} 
             onLogoChange={(logo) => updatePaystubData({ companyLogo: logo })} 
           />
         </div>
 
-        <div className="bg-white">
+        <div className="bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden">
           <PaystubForm data={paystubData} onUpdate={updatePaystubData} />
         </div>
 
-        <StepHeader step={7} title="Review" />
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
+            6
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">Review & Download</h2>
+        </div>
+        
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-8">
+          <PaystubPreview data={paystubData} />
+        </div>
 
         {/* Color options moved to top */}
 
         {/* Template selection and preview moved to top */}
       </div>
 
-      <div className="flex justify-center">
-        <DownloadHtmlFileButton data={paystubData} label="Checkout" />
+      <div className="flex justify-center pt-8">
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+          <DownloadHtmlFileButton 
+            data={paystubData} 
+            label="Complete Order" 
+            className="relative bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-2xl font-bold text-lg hover:from-primary/90 hover:to-secondary/90 transition-all duration-200 shadow-xl" 
+          />
+        </div>
       </div>
     </div>
   )

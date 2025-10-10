@@ -1,75 +1,79 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { FileText, Calculator, CreditCard, Receipt, Building, Users } from "lucide-react"
 
 export function ServicesSection() {
   const services = [
     {
       title: "Paystubs Made Easy",
-      description:
-        "Get custom Paystubs that look just like real employee pay statements. We manually calculate everything to ensure accuracy – no online generators here. Whether you need a printable paystub or a proof of income document for rent, loans, or job verification – we've got you covered.",
+      description: "Custom paystubs that look professional. Perfect for rent, loans, or job verification.",
+      icon: FileText,
     },
     {
       title: "Tax Return Assistance",
-      description:
-        "Need help with your tax filing? We provide personal tax document services for self-employed, freelancers, and employees. We handle everything from IRS e-file ready reports to tax refund summaries, making income tax preparation quick and stress-free.",
+      description: "Complete tax document services for self-employed, freelancers, and employees.",
+      icon: Calculator,
     },
     {
       title: "W2 Form Services",
-      description:
-        "Missing your W-2 wage form? We help recreate official-looking W2 payroll documents to assist with proof of income or tax purposes. Our forms are suitable for job applications, housing, and financial checks.",
+      description: "Official-looking W2 forms for proof of income and tax purposes.",
+      icon: CreditCard,
     },
     {
       title: "1099 For Contractors",
-      description:
-        "If you're self-employed or a freelancer, we offer detailed 1099-MISC and 1099-NEC forms. These are perfect for non-employee compensation and independent contractor income reports.",
+      description: "Detailed 1099-MISC and 1099-NEC forms for independent contractors.",
+      icon: Receipt,
     },
     {
-      title: "Bank Statement",
-      description:
-        "Need a bank statement for income verification, visa applications, or housing? We provide editable, print-ready bank statements that mimic real monthly bank records – professionally designed and discreetly delivered.",
+      title: "Bank Statements",
+      description: "Professional bank statements for income verification and applications.",
+      icon: Building,
     },
     {
-      title: "Monthly Payroll Service",
-      description:
-        "We offer reliable monthly payroll services to help businesses manage employee salaries, deductions, and tax compliance with accuracy. Our professional team ensures timely processing, detailed reports, and hassle-free payroll management, so you can focus on growing your business.",
+      title: "Monthly Payroll",
+      description: "Complete payroll management services for businesses of all sizes.",
+      icon: Users,
     },
   ]
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Services We Offer
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            What We 
+            <span className="text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+              Do Best
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-            Professional document services tailored to your needs. Simple, accurate, and reliable.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Professional document services that deliver results
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card
-              key={index}
-              className="border border-gray-200 bg-white rounded-none hover:border-[#239BA0] transition-all duration-300"
-            >
-              <CardContent className="p-8">
-                {/* Service Title */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">
-                    {service.title}
-                  </h3>
-                </div>
-
-                {/* Service Description */}
-                <div>
-                  <p className="text-gray-600 font-light leading-relaxed text-sm">
-                    {service.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            <div key={index} className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 hover:border-primary/20 transition-all duration-500 transform hover:-translate-y-2">
+              {/* Icon */}
+              <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="w-8 h-8 text-primary" />
+              </div>
+              
+              {/* Content */}
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

@@ -1,81 +1,62 @@
 import React from 'react';
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ShieldCheck, Clock, Headphones } from "lucide-react";
+import { Clock, Shield } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-48 -left-48 h-96 w-96 rounded-full bg-secondary/30 blur-3xl"></div>
-        <div className="absolute top-1/3 -right-16 h-96 w-96 rounded-full bg-primary/20 blur-3xl"></div>
-        <div className="absolute -bottom-24 left-1/4 h-96 w-96  rounded-full bg-secondary/20 blur-3xl"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <section id="hero" className="relative bg-white py-20 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/3 to-secondary/3"></div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Copy */}
+          
+          {/* Left Content */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/60">
-              <span className="h-2 w-2 rounded-full bg-secondary"></span>
-              Fast, secure, and compliant
-            </div>
-
-            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter text-foreground">
-              Create professional paystubs in minutes
+            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+              Create Professional
+              <span className="text-primary block">Paystubs Instantly</span>
             </h1>
-
-            <p className="mt-4 text-lg text-foreground/70">
-              Generate Paystubs, W‑2s, 1099‑MISC, and Tax Returns with bank‑ready formatting.
-              Simple workflow, instant export, and expert support when you need it.
-            </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
             
-              <Link href="/create-paystub" className="sm:ml-1">
-                <Button size="lg" variant="outline" className="px-6 hover:bg-primary/90">
-                  Generate a Paystub
-                </Button>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto lg:mx-0 leading-relaxed mb-8">
+              Generate bank-approved paystubs in under 2 minutes. No downloads, no hassle.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Link href="/create-paystub">
+                <button className="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  Create Paystub Now
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="flex items-center justify-center gap-2 text-gray-700 font-semibold px-6 py-4 border border-gray-300 rounded-xl hover:border-primary hover:text-primary transition-all duration-300">
+                  Contact Us
+                </button>
               </Link>
             </div>
-
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="flex items-center gap-3 rounded-lg border bg-white p-3 shadow-sm">
-                <ShieldCheck className="h-5 w-5 text-primary" />
-                <div className="text-sm">
-                  <p className="font-medium leading-none">Bank‑ready</p>
-                  <p className="text-foreground/60">Accurate and compliant</p>
-                </div>
+            
+            <div className="flex items-center gap-8 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-primary" />
+                <span>2-minute setup</span>
               </div>
-              <div className="flex items-center gap-3 rounded-lg border bg-white p-3 shadow-sm">
-                <Clock className="h-5 w-5 text-primary" />
-                <div className="text-sm">
-                  <p className="font-medium leading-none">2‑minute setup</p>
-                  <p className="text-foreground/60">Fast and intuitive</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 rounded-lg border bg-white p-3 shadow-sm">
-                <Headphones className="h-5 w-5 text-primary" />
-                <div className="text-sm">
-                  <p className="font-medium leading-none">24/7 support</p>
-                  <p className="text-foreground/60">We’re here to help</p>
-                </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-primary" />
+                <span>Bank approved</span>
               </div>
             </div>
           </div>
-
-          {/* Visual */}
+          
+          {/* Right Visual */}
           <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-2xl bg-gradient-to-tr from-secondary/30 to-primary/20 blur-2xl"></div>
-            <div className="rounded-2xl border bg-white shadow-2xl ring-1 ring-border overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
               <img
                 src="/paystubheroimag.png"
-                alt="Paystub preview mockup"
-                className="w-full h-full object-cover"
+                alt="Paystub preview"
+                className="w-full h-auto"
               />
             </div>
           </div>
+          
         </div>
       </div>
     </section>

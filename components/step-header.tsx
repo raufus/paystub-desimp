@@ -9,11 +9,11 @@ interface StepHeaderProps {
 
 export function StepHeader({ step, title }: StepHeaderProps) {
   return (
-    <div className="w-full bg-primary text-primary-foreground py-4 px-4 md:px-6">
-      <div className="max-w-full flex items-center gap-3">
-        <span className="text-xl font-extrabold tracking-tight">STEP {step}</span>
-        <span className="text-xl md:text-2xl font-semibold">{title}</span>
+    <div className="flex items-center gap-4 mb-6">
+      <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
+        {step}
       </div>
+      <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
     </div>
   )
 }

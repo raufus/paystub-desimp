@@ -8,9 +8,10 @@ import { useRouter } from "next/navigation"
 interface Props {
   data: GeneratorPaystubData
   label?: string
+  className?: string
 }
 
-export function DownloadHtmlFileButton({ data, label = "Download HTML" }: Props) {
+export function DownloadHtmlFileButton({ data, label = "Download HTML", className }: Props) {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -182,7 +183,7 @@ ${htmlFragment}
       data-nonexport="true"
       onClick={onClick}
       disabled={loading}
-      className="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm font-medium bg-white hover:bg-gray-50"
+      className={className || "inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm font-medium bg-white hover:bg-gray-50"}
     >
       <FileDown className="w-4 h-4" />
       {loading ? 'Preparing…' : label}

@@ -29,34 +29,34 @@ export function DocumentTypes() {
   ]
 
   return (
-    <section id="documents" className="bg-white">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x">
+    <section id="documents" className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-24 overflow-hidden">
+      {/* Enhanced background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(35,155,160,0.05),transparent_70%)]"></div>
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            Professional
+            <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+              Documents
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Create stunning, bank-ready financial documents in minutes with our premium templates</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {documents.map((doc, index) => (
-            <div key={index} className="flex flex-col items-stretch">
-              {/* Top Title */}
-              <div className="py-10 md:py-12 text-center">
-                <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-                  {doc.title}
-                </h3>
+            <div key={index} className="group aspect-square bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200 hover:border-primary/50 p-4 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary text-center mb-3 transition-colors duration-300">{doc.title}</h3>
+              <div className="flex-1 flex items-center justify-center mb-3">
+                <img src={doc.image} alt={doc.title} className="max-w-full max-h-full object-contain transform group-hover:scale-105 transition-transform duration-300" />
               </div>
-
-              {/* Illustration */}
-              <div className="flex-1 flex items-center justify-center py-10 min-h-[300px] w-full">
-                <img
-                  src={doc.image || "/placeholder.svg"}
-                  alt={`${doc.title} template`}
-                  className="w-72 md:w-80 h-auto object-contain drop-shadow mx-auto"
-                />
-              </div>
-
-              {/* Bottom full-width CTA bar */}
-              <Link
-                href={doc.href}
-                className="block w-full bg-gradient-to-r from-[#2dbcc1] to-[#1e7d85] text-white text-xl md:text-2xl font-bold text-center py-6"
-              >
-                {doc.cta} 
-                <span aria-hidden>→</span>
+              <Link href={doc.href} className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white text-center py-2 rounded-lg font-semibold transition-all duration-300 block">
+                {doc.cta} →
               </Link>
             </div>
           ))}
