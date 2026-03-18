@@ -1,15 +1,9 @@
-import { createServerClient } from "@/lib/supabase/server"
-import { cookies } from "next/headers"
+import { getCurrentUser } from "@/lib/get-user"
 import { redirect } from "next/navigation"
 import TaxReturnGenerator from "@/components/tax-return-generator"
 
 export default async function CreateTaxReturnPage() {
-  const cookieStore = cookies()
-  const supabase = createServerClient(cookieStore)
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")

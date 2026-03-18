@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { generateTaxReturnPDF } from "@/lib/tax-return-pdf-generator"
 import { saveTaxReturn } from "@/lib/actions"
-import type { User } from "@supabase/supabase-js"
+import type { User } from "@/lib/auth"
 
 interface TaxReturnData {
   // Personal Information

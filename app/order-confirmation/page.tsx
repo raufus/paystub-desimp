@@ -1,4 +1,5 @@
-import { createClient } from "@/lib/supabase/server"
+import { getCurrentUser } from "@/lib/get-user"
+import { getOrder } from "@/lib/actions"
 import { redirect } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -6,31 +7,29 @@ import { CheckCircle, Download, Home } from "lucide-react"
 import Link from "next/link"
 
 interface OrderConfirmationProps {
-  searchParams: {
+  searchParams: Promise<{
     order_id?: string
-  }
+  }>
 }
 
 export default async function OrderConfirmationPage({ searchParams }: OrderConfirmationProps) {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")
   }
 
-  const orderId = searchParams.order_id
+  const params = await searchParams
+  const orderId = params.order_id
 
   if (!orderId) {
     redirect("/dashboard")
   }
 
   // Fetch order details
-  const { data: order } = await supabase.from("orders").select("*").eq("id", orderId).eq("user_id", user.id).single()
+  const order = await getOrder(parseInt(orderId))
 
-  if (!order) {
+  if (!order || order.user_id !== user.id) {
     redirect("/dashboard")
   }
 

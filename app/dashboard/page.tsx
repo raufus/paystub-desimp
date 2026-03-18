@@ -1,30 +1,23 @@
-import { createClient } from "@/lib/supabase/server"
+import { getCurrentUser } from "@/lib/get-user"
 import { redirect } from "next/navigation"
 import DashboardClient from "@/components/dashboard-client"
+import { getUserPaystubs, getUserOrders } from "@/lib/actions"
 
 export default async function DashboardPage() {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")
   }
 
   // Fetch user's paystubs
-  const { data: paystubs } = await supabase
-    .from("paystubs")
-    .select("*")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false })
+  const paystubsResult = await getUserPaystubs()
+  const paystubs = paystubsResult.success ? paystubsResult.data : []
 
   // Fetch user's orders
-  const { data: orders } = await supabase
-    .from("orders")
-    .select("*")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false })
+  const ordersResult = await getUserOrders()
+  const orders = ordersResult.success ? ordersResult.data : []
 
   return <DashboardClient user={user} paystubs={paystubs || []} orders={orders || []} />
 }
+

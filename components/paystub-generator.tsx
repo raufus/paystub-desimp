@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { PaystubForm } from "@/components/paystub-form-new"
 import { PaystubPreview } from "@/components/paystub-preview"
 import { LogoUpload } from "@/components/logo-upload"
@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { DownloadHtmlFileButton } from "@/components/download-html-file-button"
 import { Button } from "@/components/ui/button"
 import { MessageCircle } from "lucide-react"
+import { getRecommendedTemplate, getStateConfig } from "@/lib/state-template-config"
 
 export interface PaystubData {
   // Template Selection
@@ -212,6 +213,41 @@ export function PaystubGenerator({ user: _user, initialTemplateId }: PaystubGene
     templateId: initialTemplateId || initialData.templateId,
   }))
 
+  // Auto-select template when state changes
+  useEffect(() => {
+    if (paystubData.taxState) {
+      const recommendedTemplate = getRecommendedTemplate(paystubData.taxState)
+      const stateConfig = getStateConfig(paystubData.taxState)
+      
+      // Map template names to template IDs
+      const templateMap: Record<string, string> = {
+        'classic': 'template1',
+        'modern': 'template2',
+        'detailed': 'template3',
+        'compact': 'template4'
+      }
+      
+      const newTemplateId = templateMap[recommendedTemplate] || 'template2'
+      
+      // Only update if different from current
+      if (newTemplateId !== paystubData.templateId) {
+        console.log(`State ${paystubData.taxState} selected: Auto-switching to ${recommendedTemplate} template (${newTemplateId})`)
+        setPaystubData(prev => ({ ...prev, templateId: newTemplateId }))
+      }
+
+      // Log state-specific info
+      if (stateConfig) {
+        console.log(`State Config for ${stateConfig.stateName}:`, {
+          hasStateTax: stateConfig.hasStateTax,
+          hasSDI: stateConfig.hasSDI,
+          sdiLabel: stateConfig.sdiLabel,
+          hasCityTax: stateConfig.hasCityTax,
+          legalNotices: stateConfig.legalNotices
+        })
+      }
+    }
+  }, [paystubData.taxState])
+
   const updatePaystubData = (updates: Partial<PaystubData>) => {
     setPaystubData((prev) => {
       const updated = { ...prev, ...updates }
@@ -339,19 +375,35 @@ export function PaystubGenerator({ user: _user, initialTemplateId }: PaystubGene
         {/* Template & Color Selection */}
         <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-6 border">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <span className="text-lg font-semibold text-gray-700">Template:</span>
-              <Select value={paystubData.templateId} onValueChange={(v) => updatePaystubData({ templateId: v })}>
-                <SelectTrigger className="w-48 h-11 bg-white border-2 rounded-xl">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="template1">Classic</SelectItem>
-                  <SelectItem value="template2">Modern</SelectItem>
-                  <SelectItem value="template3">Detailed</SelectItem>
-                  <SelectItem value="template4">Compact</SelectItem>
-                </SelectContent>
-              </Select>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-4">
+                <span className="text-lg font-semibold text-gray-700">Template:</span>
+                <Select value={paystubData.templateId} onValueChange={(v) => updatePaystubData({ templateId: v })}>
+                  <SelectTrigger className="w-48 h-11 bg-white border-2 rounded-xl">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="template1">Classic</SelectItem>
+                    <SelectItem value="template2">Modern</SelectItem>
+                    <SelectItem value="template3">Detailed</SelectItem>
+                    <SelectItem value="template4">Compact</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              {paystubData.taxState && (() => {
+                const stateConfig = getStateConfig(paystubData.taxState)
+                if (stateConfig) {
+                  return (
+                    <div className="text-xs text-gray-600 ml-28 flex items-center gap-1">
+                      <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span>Recommended for {stateConfig.stateName}</span>
+                      {!stateConfig.hasStateTax && <span className="ml-1 text-blue-600">(No state tax)</span>}
+                      {stateConfig.hasSDI && <span className="ml-1 text-purple-600">({stateConfig.sdiLabel})</span>}
+                    </div>
+                  )
+                }
+                return null
+              })()}
             </div>
             
             <div className="flex items-center gap-4">

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 import { signUp } from "@/lib/actions"
 
 function SubmitButton() {
@@ -30,7 +32,17 @@ function SubmitButton() {
 }
 
 export default function SignUpForm() {
+  const router = useRouter()
   const [state, formAction] = useActionState(signUp, null)
+
+  // Handle successful signup by redirecting
+  useEffect(() => {
+    if (state?.success && state?.redirectTo) {
+      console.log("Signup successful, redirecting to:", state.redirectTo)
+      router.push(state.redirectTo)
+      router.refresh()
+    }
+  }, [state, router])
 
   return (
     <div className="w-full max-w-md space-y-8">
@@ -43,12 +55,6 @@ export default function SignUpForm() {
         {state?.error && (
           <div className="bg-destructive/10 border border-destructive/50 text-destructive px-4 py-3 rounded">
             {state.error}
-          </div>
-        )}
-
-        {state?.success && (
-          <div className="bg-green-500/10 border border-green-500/50 text-green-700 px-4 py-3 rounded">
-            {state.success}
           </div>
         )}
 

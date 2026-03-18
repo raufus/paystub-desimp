@@ -145,7 +145,7 @@ export default function DashboardClient({ user, paystubs, orders }: DashboardCli
                               {paystub.employee_name} - {paystub.pay_period_start} to {paystub.pay_period_end}
                             </p>
                             <p className="text-sm text-muted-foreground">
-                              Generated on {new Date(paystub.created_at).toLocaleDateString()}
+                              Generated on {new Date(paystub.created_at).toISOString().split('T')[0]}
                             </p>
                             <p className="text-sm font-medium text-green-600">${paystub.net_pay.toFixed(2)}</p>
                           </div>
@@ -199,7 +199,7 @@ export default function DashboardClient({ user, paystubs, orders }: DashboardCli
                           <div>
                             <p className="font-medium capitalize">{order.package_type} Package</p>
                             <p className="text-sm text-muted-foreground">
-                              Ordered on {new Date(order.created_at).toLocaleDateString()}
+                              Ordered on {new Date(order.created_at).toISOString().split('T')[0]}
                             </p>
                           </div>
                         </div>

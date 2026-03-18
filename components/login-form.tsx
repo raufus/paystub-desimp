@@ -4,7 +4,7 @@ import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Loader2 } from "lucide-react"
+import { Loader2, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
@@ -37,13 +37,25 @@ export default function LoginForm() {
 
   // Handle successful login by redirecting
   useEffect(() => {
-    if (state?.success) {
-      router.push("/dashboard")
+    if (state?.success && state?.redirectTo) {
+      console.log("Login successful, redirecting to:", state.redirectTo)
+      // Use a small delay to ensure cookie is set before redirect
+      setTimeout(() => {
+        router.refresh()
+        router.push(state.redirectTo)
+      }, 100)
     }
   }, [state, router])
 
   return (
     <div className="w-full max-w-md space-y-8">
+      <button
+        onClick={() => router.push("/")}
+        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back to Home
+      </button>
       <div className="space-y-2 text-center">
         <h1 className="text-4xl font-semibold tracking-tight">Welcome back</h1>
         <p className="text-lg text-muted-foreground">Sign in to your account</p>

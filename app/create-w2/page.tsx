@@ -1,12 +1,9 @@
-import { createClient } from "@/lib/supabase/server"
+import { getCurrentUser } from "@/lib/get-user"
 import { redirect } from "next/navigation"
 import { W2Generator } from "@/components/w2-generator"
 
 export default async function CreateW2Page() {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")

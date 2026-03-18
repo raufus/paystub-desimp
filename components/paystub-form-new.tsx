@@ -1413,7 +1413,7 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                           })()}
                         </td>
                       </tr>
-                      {(data.stateTax && data.stateTax > 0) && (
+                      {(data.stateTax && data.stateTax > 0) ? (
                         <tr className="border-b border-gray-200">
                           <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
                             State Tax
@@ -1440,8 +1440,8 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                             })()}
                           </td>
                         </tr>
-                      )}
-                      {(data.stateDisability && data.stateDisability > 0) && (
+                      ) : null}
+                      {(data.stateDisability && data.stateDisability > 0) ? (
                         <tr className="border-b border-gray-200">
                           <td className="p-4 text-sm text-gray-700 border-r border-gray-200 flex items-center gap-2">
                             {((data.taxState || '').toUpperCase() === 'HI') ? 'TDI' : 'SDI'}
@@ -1468,7 +1468,7 @@ export function PaystubForm({ data, onUpdate }: PaystubFormProps) {
                             })()}
                           </td>
                         </tr>
-                      )}
+                      ) : null}
                       <tr className="bg-gray-50">
                         <td className="p-4 text-sm font-semibold text-gray-700 border-r border-gray-200">Deduction Total</td>
                         <td className="p-4 text-center text-sm font-semibold text-gray-700 border-r border-gray-200">{calculateTotalDeductions() ? formatAmount(calculateTotalDeductions()) : ''}</td>

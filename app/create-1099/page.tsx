@@ -1,12 +1,9 @@
-import { createClient } from "@/lib/supabase/server"
+import { getCurrentUser } from "@/lib/get-user"
 import { redirect } from "next/navigation"
 import { Form1099Generator } from "@/components/1099-generator"
 
 export default async function Create1099Page() {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")

@@ -1,26 +1,24 @@
-import { createClient } from "@/lib/supabase/server"
+import { getCurrentUser } from "@/lib/get-user"
 import { redirect } from "next/navigation"
 import CheckoutForm from "@/components/checkout-form"
 
 interface CheckoutPageProps {
-  searchParams: {
+  searchParams: Promise<{
     package?: string
     paystub_id?: string
-  }
+  }>
 }
 
 export default async function CheckoutPage({ searchParams }: CheckoutPageProps) {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")
   }
 
-  const packageType = searchParams.package || "basic"
-  const paystubId = searchParams.paystub_id
+  const params = await searchParams
+  const packageType = params.package || "basic"
+  const paystubId = params.paystub_id
 
   const packages = {
     basic: {
@@ -50,7 +48,7 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
           <p className="mt-2 text-black/70">Secure checkout for your document package</p>
         </div>
 
-        <CheckoutForm packageData={selectedPackage} packageType={packageType} paystubId={paystubId} userId={user.id} />
+        <CheckoutForm packageData={selectedPackage} packageType={packageType} paystubId={paystubId} userId={user.id.toString()} />
       </div>
     </div>
   )

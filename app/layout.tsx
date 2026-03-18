@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
-import { AuthProvider } from "@/lib/auth"
 
 export const metadata: Metadata = {
   title: "SRS Financials - Professional Paystub Maker",
@@ -31,7 +30,7 @@ html {
         `}</style>
       </head>
       <body suppressHydrationWarning={true}>
-        <AuthProvider>{children}</AuthProvider>
+        {children}
       </body>
     </html>
   )

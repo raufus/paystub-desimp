@@ -1,20 +1,16 @@
-import { createClient } from "@/lib/supabase/server"
+import { getCurrentUser } from "@/lib/get-user"
 import { redirect } from "next/navigation"
 import { PaystubGenerator } from "@/components/paystub-generator"
 import { PageHeader } from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { MessageCircle } from "lucide-react"
-import Link from "next/link"
 
 export default async function CreatePaystubPage({
   searchParams,
 }: {
   searchParams: Promise<{ template?: string }>
 }) {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
 
   if (!user) {
     redirect("/login")
